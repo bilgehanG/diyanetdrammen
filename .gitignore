@@ -6,6 +6,7 @@ yarn-error.log
 Thumbs.db
 
 .env
+.env.example
 .env.backup
 .env.production
 
