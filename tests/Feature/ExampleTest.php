@@ -13,8 +13,9 @@ class ExampleTest extends TestCase
     public function test_the_application_returns_a_successful_response(): void
     {
         $token = config('app.dev_preview_token');
+        $landingRoute = (string) config('app.landing_page_route', '/no/test');
 
-        $response = $this->get('/no/test?token='.$token);
+        $response = $this->get($landingRoute.'?token='.$token);
 
         $response->assertStatus(200);
     }

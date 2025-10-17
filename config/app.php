@@ -120,6 +120,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Landing Page Path
+    |--------------------------------------------------------------------------
+    |
+    | Configure the secret URI segment used to expose the marketing landing
+    | page. Update LANDING_PAGE_PATH in your environment to move the page.
+    |
+    */
+
+    'landing_page_path' => env('LANDING_PAGE_PATH', 'no/test'),
+
+    'landing_page_route' => (static function (): string {
+        $raw = (string) env('LANDING_PAGE_PATH', 'no/test');
+        $normalized = trim($raw);
+
+        if ($normalized === '') {
+            $normalized = 'no/test';
+        }
+
+        $normalized = trim($normalized, '/');
+
+        return $normalized === '' ? '/' : '/'.$normalized;
+    })(),
+
+    /*
+    |--------------------------------------------------------------------------
     | Maintenance Mode Driver
     |--------------------------------------------------------------------------
     |
