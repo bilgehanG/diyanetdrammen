@@ -19,7 +19,15 @@ return [
     ],
 
     'resend' => [
-        'key' => env('RESEND_KEY'),
+        'api_key' => env('RESEND_API_KEY'),
+        'from' => env('RESEND_FROM', 'Kontakt Skjema <onboarding@resend.dev>'),
+        'to' => env('RESEND_TO', env('CONTACT_FORM_TO', 'post@diyanetdrammen.no')),
+    ],
+
+    'recaptcha' => [
+        'site_key' => env('RECAPTCHA_SITE_KEY'),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY'),
+        'minimum_score' => (float) env('RECAPTCHA_MINIMUM_SCORE', 0.5),
     ],
 
     'ses' => [
